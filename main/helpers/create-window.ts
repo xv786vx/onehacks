@@ -81,6 +81,7 @@ export default (
     autoHideMenuBar: true,
   };
   win = new BrowserWindow(browserOptions);
+  win.setAspectRatio(16 / 9);
 
   win.on("close", saveState);
 
