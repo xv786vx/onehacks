@@ -1,5 +1,11 @@
 ## Usage
 
+### Install dependencies
+
+```
+$ npm install
+```
+
 ### How to run
 
 ```
