@@ -137,7 +137,7 @@ export default function AddTask() {
                     type="range"
                     step="10"
                     value={inputProgress}
-                    onChange={(e) => setInputProgress(Number(e.target.value))}
+                    onChange={(e) => setInputProgress(parseInt(e.target.value))}
                     className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
                   ></input>
                   <span className="pt-2 text-center">{inputProgress}%</span>
