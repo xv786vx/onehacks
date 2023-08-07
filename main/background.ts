@@ -1,6 +1,7 @@
-import { app } from 'electron';
+import { app, ipcMain } from 'electron';
 import serve from 'electron-serve';
 import { createWindow } from './helpers';
+import testNotification from "./example";
 
 const isProd: boolean = process.env.NODE_ENV === 'production';
 
@@ -14,8 +15,8 @@ if (isProd) {
   await app.whenReady();
 
   const mainWindow = createWindow('main', {
-    width: 1000,
-    height: 600,
+    width: 1280,
+    height: 720,
   });
 
   if (isProd) {
@@ -25,6 +26,12 @@ if (isProd) {
     await mainWindow.loadURL(`http://localhost:${port}/home`);
     mainWindow.webContents.openDevTools();
   }
+
+  ipcMain.handle("test-notification", (_, inputTitle, inputBody) => {
+    const result = testNotification(inputTitle, inputBody);
+    return result;
+  });
+
 })();
 
 app.on('window-all-closed', () => {
