@@ -9,6 +9,8 @@ export default function Home() {
 
   const handleTestNotification = async () =>
     await ipcRenderer.invoke("test-notification", inputTitle, inputBody);
+  
+  const handleTestAlgorithm = async () => await ipcRenderer.invoke("test-algorithm");
 
   return (
     <React.Fragment>
@@ -28,6 +30,7 @@ export default function Home() {
         onChange={(e) => setInputBody(e.target.value)}
       />
       <button onClick={handleTestNotification}>Send Notification</button>
+      <button onClick={handleTestAlgorithm}>Test Algorithm</button>
       <Link href="/next">
         <a className="btn-blue">Go to next page</a>
       </Link>
