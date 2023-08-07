@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <React.Fragment>
       <Head>
-        <title>Home</title>
+        <title>Sage</title>
       </Head>
       <span>Title</span>
       <input
