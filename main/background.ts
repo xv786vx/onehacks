@@ -12,8 +12,10 @@ else app.setPath("userData", `${app.getPath("userData")} (development)`);
 
 (async () => {
   // Temporary
-  add_task(new Task("Thing 1", new Date(Date.now()+10000)));
-  add_task(new Task("Thing 2", new Date(Date.now()+20000), TaskPriority.HIGH, percentage(70)));
+  add_task(new Task("Thing 1", new Date(Date.now()+10000), TaskPriority.MEDIUM, percentage(40)));
+  add_task(new Task("Thing 2", new Date(Date.now()+25000), TaskPriority.HIGH, percentage(70)));
+  add_task(new Task("Thing 3", new Date(Date.now()+25000), TaskPriority.LOW, percentage(10)));
+  add_task(new Task("Thing 4", new Date(Date.now()+25000), TaskPriority.HIGH, percentage(20)));
 
   await app.whenReady();
 
@@ -26,6 +28,7 @@ else app.setPath("userData", `${app.getPath("userData")} (development)`);
   else await mainWindow.loadURL(`http://localhost:${process.argv[2]}/home`);
 
   ipcMain.handle("test-algorithm", (_, _start, _end) => {
+    console.log(get_tasks());
     const result: number[] = taskk_distribution(get_tasks(), 2, 5);
     console.log(result);
     return result;
