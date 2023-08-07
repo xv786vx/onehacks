@@ -51,7 +51,6 @@ class TaskHandler {
 
   remove_task(task_to_remove: Task): void {
     const index: number = this.tasks.indexOf(task_to_remove);
-    console.log(index);
     if (index > -1) {
       this.tasks.splice(index, 1);
       this.save_tasks();

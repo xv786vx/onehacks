@@ -14,12 +14,12 @@ function taskk_distribution(
     let progress_sum: number = 0;
 
     for (let y = 0; y < tasks.length; y++) {
-      days_left_sum += get_day_difference(Date.now(), tasks[y].due_date);
+      days_left_sum += get_day_difference(new Date(), new Date(tasks[y].due_date));
       priority_sum += tasks[y].priority;
       progress_sum += tasks[y].progress;
     }
 
-    let days_left: number = Math.max(0, get_day_difference(Date.now(), tasks[i].due_date));
+    let days_left: number = Math.max(0, get_day_difference(new Date(), new Date(tasks[i].due_date)));
     output.push(
       Math.round(
         (days_left + tasks[i].priority + tasks[i].progress) /
@@ -29,13 +29,12 @@ function taskk_distribution(
       ) * 15
     );
   }
-  console.log(output.reduce((a, b) => a + b));
   return output;
 }
 
-function get_day_difference(startDate: number, endDate: Date): number {
+function get_day_difference(startDate: Date, endDate: Date): number {
   const msInDay = 24 * 60 * 60 * 1000;
-  return Math.round(Math.abs(Number(endDate) - Number(startDate)) / msInDay);
+  return Math.round(Math.abs(endDate.getTime() - startDate.getTime()) / msInDay);
 }
 
 export default taskk_distribution;
