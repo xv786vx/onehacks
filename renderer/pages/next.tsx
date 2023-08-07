@@ -30,7 +30,7 @@ export default function AddTask() {
     <div>
       <button 
       onClick={handleClick}
-      className='bg-blue-600 hover:bg-blue-700 duration-300 text-white shadow p-2 rounded-md' type='submit'
+      className='bg-blue-100 hover:bg-blue-700 duration-300 text-white shadow p-2 rounded-md' type='submit'
       >
         Create Task 
       </button>

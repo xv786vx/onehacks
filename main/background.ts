@@ -3,6 +3,7 @@ import serve from "electron-serve";
 import { createWindow } from "./helpers";
 import { get_tasks, add_task } from "./taskhandler";
 import taskk_distribution from "./planner-algo";
+import test_notification from "./example"
 import Task, { TaskPriority, percentage } from "./task";
 
 const isProd: boolean = process.env.NODE_ENV === "production";
@@ -31,6 +32,11 @@ else app.setPath("userData", `${app.getPath("userData")} (development)`);
     console.log(get_tasks());
     const result: number[] = taskk_distribution(get_tasks(), 2, 5);
     console.log(result);
+    return result;
+  })
+
+  ipcMain.handle("test-notification", (_, name, body) => {
+    const result = test_notification(name, body);
     return result;
   })
 })();
