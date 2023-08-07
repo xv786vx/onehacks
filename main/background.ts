@@ -6,7 +6,7 @@ import taskk_distribution from "./planner-algo";
 import Task, { TaskPriority, percentage } from "./task";
 
 const isProd: boolean = process.env.NODE_ENV === "production";
-
+k
 if (isProd) serve({ directory: "app" });
 else app.setPath("userData", `${app.getPath("userData")} (development)`);
 
@@ -19,9 +19,9 @@ else app.setPath("userData", `${app.getPath("userData")} (development)`);
 
   await app.whenReady();
 
-  const mainWindow = createWindow("main", {
-    width: 1280,
-    height: 720,
+  const mainWindow = createWindow('main', {
+    width: 1000,
+    height: 600,
   });
 
   if (isProd) await mainWindow.loadURL("app://./home.html");
