@@ -1,4 +1,5 @@
-import Task, { Percentage, TaskPriority } from "./task";
+import path from "path";
+import Task, { TaskPriority, percentage } from "./task";
 import fs from "fs";
 
 class TaskHandler {
@@ -12,7 +13,7 @@ class TaskHandler {
 
   private read_tasks(): Task[] {
     if (!fs.existsSync(this.file_path)) {
-      fs.writeFileSync(this.file_path, JSON.stringify({ tasks: [] }), {
+      fs.writeFileSync(this.file_path, JSON.stringify([]), {
         encoding: "utf8",
       });
 
@@ -30,7 +31,7 @@ class TaskHandler {
           task.name ?? "",
           task.due_date ?? new Date(null),
           number_to_task_priority(task.priority ?? 2),
-          new Percentage(task.progress ?? 0)
+          percentage(task.progress ?? 0)
         )
       );
     }
@@ -70,4 +71,14 @@ function number_to_task_priority(x: number): TaskPriority {
   }
 }
 
-export default TaskHandler;
+const handler: TaskHandler = new TaskHandler(path.join(__dirname, "tasks.json"));
+
+const get_tasks = () => handler.tasks;
+const add_task = (task: Task) => handler.add_task(task);
+const remove_task = (task: Task) => handler.remove_task(task);
+
+export {
+  get_tasks,
+  add_task,
+  remove_task
+}

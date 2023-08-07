@@ -1,42 +1,32 @@
 enum TaskPriority {
-    LOW = 1,
-    MEDIUM = 2,
-    HIGH = 3
+  LOW = 1,
+  MEDIUM = 2,
+  HIGH = 3,
 }
 
 class Task {
-    name: string;
-    due_date: Date;
-    priotity: TaskPriority;
-    progress: Percentage;
+  name: string;
+  due_date: Date;
+  priority: TaskPriority;
+  progress: number;
 
-    constructor(name: string, due_date: Date, priotity?: TaskPriority, progress?: Percentage) {
-        this.name = name;
-        this.due_date = due_date;
-        this.priotity = priotity || TaskPriority.MEDIUM;
-        this.progress = progress || new Percentage(0);
-    }
+  constructor(
+    name: string,
+    due_date: Date,
+    priority?: TaskPriority,
+    progress?: number) {
+    this.name = name;
+    this.due_date = due_date;
+    this.priority = priority || TaskPriority.MEDIUM;
+    this.progress = progress || percentage(0);
+  }
 }
 
-class Percentage {
-    private _value: number;
-
-    constructor(value: number) {
-        this._value = value;
-    }
-
-    get value(): number {
-        return this._value;
-    }
-
-    set value(value: number) {
-        if (value < 0) this._value = 0;
-        else if (value > 100) this._value = 100;
-        else this.value = Math.round(value);
-    }
+function percentage(value: number): number {
+  if (value < 0) return 0;
+  else if (value > 100) return 100;
+  else return Math.round(value);
 }
 
 export default Task;
-export {
-    TaskPriority, Percentage
-}
+export { TaskPriority, percentage };
