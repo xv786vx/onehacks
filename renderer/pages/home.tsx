@@ -1,39 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { ipcRenderer } from "electron";
+import Image from "next/image"
+import logo from '../assets/onehacks-logo.png'
 
 export default function Home() {
-  const [inputTitle, setInputTitle] = useState("");
-  const [inputBody, setInputBody] = useState("");
-
-  const handleTestNotification = async () =>
-    await ipcRenderer.invoke("test-notification", inputTitle, inputBody);
-  
-  const handleTestAlgorithm = async () => await ipcRenderer.invoke("test-algorithm");
 
   return (
     <React.Fragment>
       <Head>
-        <title>Home</title>
+        <title>Sage.</title>
       </Head>
-      <span>Title</span>
-      <input
-        className="text-black"
-        value={inputTitle}
-        onChange={(e) => setInputTitle(e.target.value)}
-      />
-      <span>Body</span>
-      <input
-        className="text-black"
-        value={inputBody}
-        onChange={(e) => setInputBody(e.target.value)}
-      />
-      <button onClick={handleTestNotification}>Send Notification</button>
-      <button onClick={handleTestAlgorithm}>Test Algorithm</button>
+    <div className="bg-black1 h-screen">
+
+      <div className="logo">
+        <Image src={logo} />
+      </div>
+
+      <div className="font-custom bg-black1 pl-24 sm:pl-36 md:pl-48 pt-16">
+        <h1 className="pb-4 text-6xl font-bold">Sage.</h1>
+        <p className="text-2xl">Focus on what really matters.</p>
+      </div>
+
       <Link href="/next">
-        <a className="btn-blue">Go to next page</a>
+        <div className="bg-black1 pl-24 sm:pl-36 md:pl-48 py-24">
+          <button className="homepage-btn">
+            <a className="font-custom">Create Tasks</a>
+          </button>
+        </div>
       </Link>
+    </div>
+
     </React.Fragment>
   );
 }

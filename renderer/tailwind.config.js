@@ -4,11 +4,21 @@ module.exports = {
     "./renderer/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontSize: {
+      xs: '0.75rem',
+      sm: '0.875rem',
+      base: '1rem',
+      lg: '1.125rem',
+      xl: '1.25rem',
+      '2xl': '1.5rem',
+      '3xl': '1.875rem',
+      '4xl': '2.25rem',
+      '5xl': '3rem',
+      '6xl': '4rem',
+    },
     colors: {
-      black: {
-        b1: '#1F1F1F',
-        b2: '#313131'
-      },
+      black1: '#1F1F1F',
+      black2: '#313131',
       white: '#ffffff',
       gray: {
         100: '#f7fafc',
@@ -25,10 +35,8 @@ module.exports = {
         100: '#3185fc'
       },
       red: '#ff0000',
-      green: {
-        sage1: '#5C9C73',
-        sage2: '#72B68A'
-      },
+      sage1: '#5C9C73',
+      sage2: '#72B68A',
       yellow: '#ffff00',
     },
     extend: {},
