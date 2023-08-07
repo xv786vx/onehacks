@@ -20,6 +20,7 @@ function taskk_distribution(
     }
 
     let days_left: number = Math.max(0, get_day_difference(new Date(), new Date(tasks[i].due_date)));
+    //let days_left: number = get_day_difference(new Date(), new Date(tasks[i].due_date));
     output.push(
       Math.round(
         (days_left + tasks[i].priority + tasks[i].progress) /
