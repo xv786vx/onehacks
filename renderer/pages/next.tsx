@@ -9,7 +9,7 @@ export default function AddTask() {
   const [inputName, setInputName] = useState("");
   const [inputDate, setInputDate] = useState("");
   const [inputPriority, setInputPriority] = useState("");
-  const [inputProgress, setInputProgress] = useState("");
+  const [inputProgress, setInputProgress] = useState(0);
   //const handleProgressChange = () => setInputProgress(100-inputProgress)
 
   const handleTestNotification = async () =>
@@ -137,7 +137,7 @@ export default function AddTask() {
                     type="range"
                     step="10"
                     value={inputProgress}
-                    onChange={(e) => setInputProgress(e.target.value)}
+                    onChange={(e) => setInputProgress(Number(e.target.value))}
                     className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
                   ></input>
                   <span className="pt-2 text-center">{inputProgress}%</span>
