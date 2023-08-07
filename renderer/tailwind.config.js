@@ -5,7 +5,10 @@ module.exports = {
   ],
   theme: {
     colors: {
-      black: '#000000',
+      black: {
+        b1: '#1F1F1F',
+        b2: '#313131'
+      },
       white: '#ffffff',
       gray: {
         100: '#f7fafc',
@@ -22,7 +25,10 @@ module.exports = {
         100: '#3185fc'
       },
       red: '#ff0000',
-      green: '#00ff00',
+      green: {
+        sage1: '#5C9C73',
+        sage2: '#72B68A'
+      },
       yellow: '#ffff00',
     },
     extend: {},
