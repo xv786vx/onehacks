@@ -9,14 +9,16 @@ export default function AddTask() {
   const [inputName, setInputName] = useState("");
   const [inputDate, setInputDate] = useState("");
   const [inputPriority, setInputPriority] = useState("");
-  const [inputProgress, setInputProgress] = useState("");
-  //const handleProgressChange = () => setInputProgress(100-inputProgress)
+  const [inputProgress, setInputProgress] = useState(0);
+
+  const [inputStartDate, setInputStartDate] = useState("");
+  const [inputEndDate, setInputEndDate] = useState("");
 
   const handleTestNotification = async () =>
     await ipcRenderer.invoke(
       "test-notification",
-      `${inputName} ${inputDate}`,
-      `${inputPriority} ${inputProgress}`
+      `${inputName} ${inputDate} ${inputStartDate} ${inputEndDate}`,
+      `${inputPriority} ${inputProgress}`,
     );
 
   const [isOpen, setIsOpen] = useState(false);
@@ -49,7 +51,7 @@ export default function AddTask() {
         <title>Tasks View</title>
       </Head>
 
-      <div className="container">
+      <div className="container pb-4">
         <button
           className="bg-blue-500 text-white font-semibold py-2 px-4 rounded"
           onClick={handleToggle}
@@ -137,7 +139,7 @@ export default function AddTask() {
                     type="range"
                     step="10"
                     value={inputProgress}
-                    onChange={(e) => setInputProgress(e.target.value)}
+                    onChange={(e) => setInputProgress(parseInt(e.target.value))}
                     className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
                   ></input>
                   <span className="pt-2 text-center">{inputProgress}%</span>
@@ -157,6 +159,48 @@ export default function AddTask() {
           </div>
         )}
       </div>
+
+      <div className="flex flex-row px-4 gap-4">
+        <div className="pb-4">
+                  <React.Fragment>
+                    <Container>
+                      <div className="border text-sm rounded-lg block w-32 p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 text-black col-sm-5">
+                        <DatePicker
+                          selected={inputStartDate}
+                          onChange={(date) => setInputStartDate(date)}
+                          placeholderText="Start Studying"
+                          dateFormat="MMMM d, yyyy h:mm aa"
+                          showPopperArrow={false}
+                          showTimeSelect
+                          timeFormat="HH:mm"
+                          timeIntervals={15}
+                          className="p-2 w-28 -my-2 -ml-2 text-white text-align-left bg-gray-700"
+                        />
+                      </div>
+                    </Container>
+                  </React.Fragment>
+          </div>
+
+          <div className="pb-4">
+                  <React.Fragment>
+                    <Container>
+                      <div className="border text-sm rounded-lg block w-32 p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 text-black col-sm-5">
+                        <DatePicker
+                          selected={inputEndDate}
+                          onChange={(date) => setInputEndDate(date)}
+                          placeholderText="End Studying"
+                          dateFormat="MMMM d, yyyy h:mm aa"
+                          showPopperArrow={false}
+                          showTimeSelect
+                          timeFormat="HH:mm"
+                          timeIntervals={15}
+                          className="p-2 w-28 -my-2 -ml-2 text-white text-align-left bg-gray-700"
+                        />
+                      </div>
+                    </Container>
+                  </React.Fragment>
+            </div>
+          </div>
     </React.Fragment>
   );
 }
