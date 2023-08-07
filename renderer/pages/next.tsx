@@ -14,12 +14,19 @@ export default function AddTask() {
   const [inputStartDate, setInputStartDate] = useState("");
   const [inputEndDate, setInputEndDate] = useState("");
 
-  const handleTestNotification = async () =>
+  const handleAddTask = async () => {
     await ipcRenderer.invoke(
-      "test-notification",
-      `${inputName} ${inputDate} ${inputStartDate} ${inputEndDate}`,
-      `${inputPriority} ${inputProgress}`,
+      "add-task",
+      inputName,
+      inputDate,
+      inputPriority,
+      inputProgress
     );
+    setInputName("");
+    setInputDate("");
+    setInputPriority("");
+    setInputProgress(0);
+  };
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -32,16 +39,18 @@ export default function AddTask() {
     const handleClick = () => setTask(true);
 
     return (
+      <>
       <div>
         <button
           onClick={handleClick}
           className="bg-blue-100 hover:bg-blue-700 duration-300 text-white shadow p-2 rounded-md"
-          type="submit"
+          disabled={inputName.length === 0 || inputDate.length === 0}
         >
           Create Task
         </button>
         {task ? <div>hello</div> : <div></div>}
       </div>
+      </>
     );
   };
 
@@ -91,7 +100,9 @@ export default function AddTask() {
                       <div className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 text-black col-sm-5">
                         <DatePicker
                           selected={inputDate}
-                          onChange={(date) => setInputDate(date)}
+                          onChange={(date: React.SetStateAction<string>) =>
+                            setInputDate(date)
+                          }
                           placeholderText="Click to select a date"
                           dateFormat="MMMM d, yyyy h:mm aa"
                           showPopperArrow={false}
@@ -116,7 +127,10 @@ export default function AddTask() {
                   <select
                     name="priority"
                     value={inputPriority}
-                    onChange={(e) => setInputPriority(e.target.value)}
+                    onChange={(e) => {
+                      setInputPriority(e.target.value);
+                      console.log(inputPriority);
+                    }}
                     className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                   >
                     <option>Select an option</option>
@@ -146,11 +160,7 @@ export default function AddTask() {
                 </div>
 
                 <div className="flex pt-8 mx-auto justify-center">
-                  <button
-                    className=""
-                    type="submit"
-                    onClick={handleTestNotification}
-                  >
+                  <button className="" type="submit" onClick={handleAddTask}>
                     <CreateTask />
                   </button>
                 </div>
@@ -162,45 +172,49 @@ export default function AddTask() {
 
       <div className="flex flex-row px-4 gap-4">
         <div className="pb-4">
-                  <React.Fragment>
-                    <Container>
-                      <div className="border text-sm rounded-lg block w-32 p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 text-black col-sm-5">
-                        <DatePicker
-                          selected={inputStartDate}
-                          onChange={(date) => setInputStartDate(date)}
-                          placeholderText="Start Studying"
-                          dateFormat="MMMM d, yyyy h:mm aa"
-                          showPopperArrow={false}
-                          showTimeSelect
-                          timeFormat="HH:mm"
-                          timeIntervals={15}
-                          className="p-2 w-28 -my-2 -ml-2 text-white text-align-left bg-gray-700"
-                        />
-                      </div>
-                    </Container>
-                  </React.Fragment>
-          </div>
+          <React.Fragment>
+            <Container>
+              <div className="border text-sm rounded-lg block w-32 p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 text-black col-sm-5">
+                <DatePicker
+                  selected={inputStartDate}
+                  onChange={(date: React.SetStateAction<string>) =>
+                    setInputStartDate(date)
+                  }
+                  placeholderText="Start Studying"
+                  dateFormat="MMMM d, yyyy h:mm aa"
+                  showPopperArrow={false}
+                  showTimeSelect
+                  timeFormat="HH:mm"
+                  timeIntervals={15}
+                  className="p-2 w-28 -my-2 -ml-2 text-white text-align-left bg-gray-700"
+                />
+              </div>
+            </Container>
+          </React.Fragment>
+        </div>
 
-          <div className="pb-4">
-                  <React.Fragment>
-                    <Container>
-                      <div className="border text-sm rounded-lg block w-32 p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 text-black col-sm-5">
-                        <DatePicker
-                          selected={inputEndDate}
-                          onChange={(date) => setInputEndDate(date)}
-                          placeholderText="End Studying"
-                          dateFormat="MMMM d, yyyy h:mm aa"
-                          showPopperArrow={false}
-                          showTimeSelect
-                          timeFormat="HH:mm"
-                          timeIntervals={15}
-                          className="p-2 w-28 -my-2 -ml-2 text-white text-align-left bg-gray-700"
-                        />
-                      </div>
-                    </Container>
-                  </React.Fragment>
-            </div>
-          </div>
+        <div className="pb-4">
+          <React.Fragment>
+            <Container>
+              <div className="border text-sm rounded-lg block w-32 p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 text-black col-sm-5">
+                <DatePicker
+                  selected={inputEndDate}
+                  onChange={(date: React.SetStateAction<string>) =>
+                    setInputEndDate(date)
+                  }
+                  placeholderText="End Studying"
+                  dateFormat="MMMM d, yyyy h:mm aa"
+                  showPopperArrow={false}
+                  showTimeSelect
+                  timeFormat="HH:mm"
+                  timeIntervals={15}
+                  className="p-2 w-28 -my-2 -ml-2 text-white text-align-left bg-gray-700"
+                />
+              </div>
+            </Container>
+          </React.Fragment>
+        </div>
+      </div>
     </React.Fragment>
   );
 }
