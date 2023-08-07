@@ -6,7 +6,7 @@ import taskk_distribution from "./planner-algo";
 import Task, { TaskPriority, percentage } from "./task";
 
 const isProd: boolean = process.env.NODE_ENV === "production";
-k
+
 if (isProd) serve({ directory: "app" });
 else app.setPath("userData", `${app.getPath("userData")} (development)`);
 
