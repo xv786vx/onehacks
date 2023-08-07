@@ -3,7 +3,7 @@ import serve from "electron-serve";
 import { createWindow } from "./helpers";
 import { get_tasks, add_task } from "./taskhandler";
 import taskk_distribution from "./planner-algo";
-import test_notification from "./example"
+import test_notification from "./example";
 import Task, { TaskPriority, percentage } from "./task";
 
 const isProd: boolean = process.env.NODE_ENV === "production";
@@ -13,14 +13,42 @@ else app.setPath("userData", `${app.getPath("userData")} (development)`);
 
 (async () => {
   // Temporary
-  add_task(new Task("Thing 1", new Date(Date.now()+10000), TaskPriority.MEDIUM, percentage(40)));
-  add_task(new Task("Thing 2", new Date(Date.now()+25000), TaskPriority.HIGH, percentage(70)));
-  add_task(new Task("Thing 3", new Date(Date.now()+25000), TaskPriority.LOW, percentage(10)));
-  add_task(new Task("Thing 4", new Date(Date.now()+25000), TaskPriority.HIGH, percentage(20)));
+  add_task(
+    new Task(
+      "Thing 1",
+      new Date(Date.now() + 10000),
+      TaskPriority.MEDIUM,
+      percentage(40)
+    )
+  );
+  add_task(
+    new Task(
+      "Thing 2",
+      new Date(Date.now() + 25000),
+      TaskPriority.HIGH,
+      percentage(70)
+    )
+  );
+  add_task(
+    new Task(
+      "Thing 3",
+      new Date(Date.now() + 25000),
+      TaskPriority.LOW,
+      percentage(10)
+    )
+  );
+  add_task(
+    new Task(
+      "Thing 4",
+      new Date(Date.now() + 25000),
+      TaskPriority.HIGH,
+      percentage(20)
+    )
+  );
 
   await app.whenReady();
 
-  const mainWindow = createWindow('main', {
+  const mainWindow = createWindow("main", {
     width: 1000,
     height: 600,
   });
@@ -33,12 +61,12 @@ else app.setPath("userData", `${app.getPath("userData")} (development)`);
     const result: number[] = taskk_distribution(get_tasks(), 2, 5);
     console.log(result);
     return result;
-  })
+  });
 
   ipcMain.handle("test-notification", (_, name, body) => {
     const result = test_notification(name, body);
     return result;
-  })
+  });
 })();
 
 app.on("window-all-closed", () => app.quit());

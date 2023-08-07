@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Head from "next/head";
-import Link from "next/link"
+import Link from "next/link";
 import { ipcRenderer } from "electron";
 
 export default function Home() {
@@ -28,9 +28,9 @@ export default function Home() {
         onChange={(e) => setInputBody(e.target.value)}
       />
       <button onClick={handleTestNotification}>Send Notification</button>
-      <Link href='/next'>
-          <a className='btn-blue'>Go to next page</a>
-        </Link>
+      <Link href="/next">
+        <a className="btn-blue">Go to next page</a>
+      </Link>
     </React.Fragment>
   );
 }

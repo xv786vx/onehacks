@@ -21,8 +21,7 @@ class TaskHandler {
     }
 
     const tasks_raw =
-      JSON.parse(fs.readFileSync(this.file_path, { encoding: "utf8" })) ??
-      [];
+      JSON.parse(fs.readFileSync(this.file_path, { encoding: "utf8" })) ?? [];
     let tasks: Task[] = [];
 
     for (const task of tasks_raw) {
@@ -40,7 +39,9 @@ class TaskHandler {
   }
 
   private save_tasks(): void {
-    fs.writeFileSync(this.file_path, JSON.stringify(this.tasks), {encoding: "utf8"});
+    fs.writeFileSync(this.file_path, JSON.stringify(this.tasks), {
+      encoding: "utf8",
+    });
   }
 
   add_task(task: Task): void {
@@ -71,14 +72,12 @@ function number_to_task_priority(x: number): TaskPriority {
   }
 }
 
-const handler: TaskHandler = new TaskHandler(path.join(__dirname, "tasks.json"));
+const handler: TaskHandler = new TaskHandler(
+  path.join(__dirname, "tasks.json")
+);
 
 const get_tasks = () => handler.tasks;
 const add_task = (task: Task) => handler.add_task(task);
 const remove_task = (task: Task) => handler.remove_task(task);
 
-export {
-  get_tasks,
-  add_task,
-  remove_task
-}
+export { get_tasks, add_task, remove_task };

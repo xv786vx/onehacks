@@ -14,7 +14,8 @@ class Task {
     name: string,
     due_date: Date,
     priority?: TaskPriority,
-    progress?: number) {
+    progress?: number
+  ) {
     this.name = name;
     this.due_date = due_date;
     this.priority = priority || TaskPriority.MEDIUM;
