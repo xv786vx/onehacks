@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <React.Fragment>
       <Head>
-        <title>Sage.</title>
+        <title>Sage</title>
       </Head>
     <div className="bg-black1 h-screen">
 
@@ -18,7 +18,7 @@ export default function Home() {
       </div>
 
       <div className="font-custom bg-black1 pl-24 sm:pl-36 md:pl-48 pt-16">
-        <h1 className="pb-4 text-6xl font-bold">Sage.</h1>
+        <h1 className="pb-4 text-6xl font-bold">Sage</h1>
         <p className="text-2xl">Focus on what really matters.</p>
       </div>
 

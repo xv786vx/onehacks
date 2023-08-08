@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Head from "next/head";
+import Link from "next/link"
 import { Container } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -57,8 +58,12 @@ export default function AddTask() {
   return (
     <React.Fragment>
       <Head>
-        <title>Tasks View</title>
+        <title>Sage</title>
       </Head>
+
+      <Link href="/home">
+        hi
+      </Link>
 
       <div className="container pb-4">
         <button
