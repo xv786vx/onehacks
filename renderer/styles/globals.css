@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap');
-
 @layer base {
   body {
     @apply bg-gray-800 text-white;
@@ -11,13 +9,20 @@
 }
 
 .logo {
-  @apply w-full sm:max-w-md md:max-w-lg max-w-sm pl-24 sm:pl-36 md:pl-48 pt-4 sm:pt-16 md:pt-36
+  @apply w-full sm:max-w-md md:max-w-lg max-w-sm pl-24 sm:pl-36 md:pl-48 pt-4 sm:pt-16 md:pt-36;
 }
 
 .homepage-btn {
-  @apply bg-black1 border border-sage2 hover:bg-black2 duration-300 text-white text-2xl shadow py-4 px-8 rounded-[18px]
+  @apply bg-black1 border border-sage2 hover:bg-black2 duration-300 text-white text-2xl shadow py-4 px-8 rounded-[18px];
+  font-family: 'Source Code Pro', monospace;
 }
 
-.font-custom {
+.sage-title {
   font-family: 'Source Code Pro', monospace;
+  @apply bg-black1 pl-24 sm:pl-36 md:pl-48 pt-16 pb-4 text-6xl font-bold;
+}
+
+.sage-slogan {
+  font-family: 'Source Code Pro', monospace;
+  @apply bg-black1 pl-24 sm:pl-36 md:pl-48 pt-16 text-2xl;
 }
