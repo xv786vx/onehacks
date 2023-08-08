@@ -20,24 +20,45 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-      <div className="bg-black1 h-screen">
-        <div className="logo">
-          <Image src={logo} />
-        </div>
 
-        <div>
-          <h1 className="sage-title">Sage.</h1>
-          <p className="sage-slogan">Focus on what really matters.</p>
-        </div>
+      <div className="bg-black1 h-screen flex flex-row">
 
-        <Link href="/next">
-          <div className="bg-black1 pl-24 sm:pl-36 md:pl-48 py-24">
-            <button className="homepage-btn">
-              <a className="font-custom">Create Tasks</a>
-            </button>
+        <div className="w-1/2">
+          <div className="logo">
+            <Image src={logo} />
           </div>
-        </Link>
+
+          <div>
+            <h1 className="sage-title">Sage.</h1>
+            <p className="sage-slogan">Focus on what really matters.</p>
+          </div>
+
+          <Link href="/next">
+            <div className="bg-black1 pl-24 sm:pl-36 md:pl-48 py-24">
+              <button className="homepage-btn">
+                <a className="scp">Create Tasks</a>
+              </button>
+            </div>
+          </Link>
+        </div>
+        
+        <div className="w-1/2 pl-16">
+          <div>
+            <h1 className="testimonial-title">Testimonials</h1>
+            <div className="custom-scrollbar overflow-y-scroll max-h-[560px]">
+              <p className="quote">"Helped me zero in on my homework with clear time blocks, I got my stuff done and stopped procrastinating!"</p>
+              <p className="quote">"Helped me zero in on my homework with clear time blocks, I got my stuff done and stopped procrastinating!"</p>
+              <p className="quote">"Helped me zero in on my homework with clear time blocks, I got my stuff done and stopped procrastinating!"</p>
+              <p className="quote">"Helped me zero in on my homework with clear time blocks, I got my stuff done and stopped procrastinating!"</p>
+              <p className="quote">"Helped me zero in on my homework with clear time blocks, I got my stuff done and stopped procrastinating!"</p>
+              <p className="quote">"Helped me zero in on my homework with clear time blocks, I got my stuff done and stopped procrastinating!"</p>
+            </div>
+          </div>
+
+        </div>
+
       </div>
+
     </React.Fragment>
   );
 }

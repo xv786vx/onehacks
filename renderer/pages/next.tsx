@@ -44,7 +44,7 @@ export default function AddTask() {
       <div>
         <button
           onClick={handleClick}
-          className="bg-blue-100 hover:bg-blue-700 duration-300 text-white shadow p-2 rounded-md"
+          className="task-btn"
           disabled={inputName.length === 0 || inputDate.length === 0}
         >
           Create Task
@@ -61,31 +61,27 @@ export default function AddTask() {
         <title>Sage</title>
       </Head>
 
+      <div className="bg-black1 h-screen">
+
       <Link href="/home">
         hi
       </Link>
 
       <div className="container pb-4">
         <button
-          className="bg-blue-500 text-white font-semibold py-2 px-4 rounded"
+          className="toggle-btn"
           onClick={handleToggle}
         >
           {isOpen ? "-" : "+"}
         </button>
         {isOpen && (
-          <div className="bg-gray-800 border border-gray-600 w-72 mt-4 p-4">
+          <div className="bg-black1 border border-sage2 w-72 mt-4 p-4">
             <div className="flex p-4 justify-center items-center ">
               <form className="flex flex-col">
                 <div className="pb-4">
-                  <label
-                    className="block font-semibold text-md pb-2"
-                    htmlFor="name"
-                  >
-                    Task Name
-                  </label>
 
                   <input
-                    className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                    className="input-field"
                     placeholder="Task Name"
                     value={inputName}
                     onChange={(e) => setInputName(e.target.value)}
@@ -94,7 +90,7 @@ export default function AddTask() {
 
                 <div className="pb-4">
                   <label
-                    className="block font-semibold text-md pb-2"
+                    className="block scp text-md pb-2"
                     htmlFor="duedate"
                   >
                     Due Date
@@ -102,7 +98,7 @@ export default function AddTask() {
 
                   <React.Fragment>
                     <Container>
-                      <div className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 text-black col-sm-5">
+                      <div className="input-field">
                         <DatePicker
                           selected={inputDate}
                           onChange={(date: React.SetStateAction<string>) =>
@@ -114,7 +110,7 @@ export default function AddTask() {
                           showTimeSelect
                           timeFormat="HH:mm"
                           timeIntervals={15}
-                          className="p-2 w-52 -my-2 -ml-2 text-white text-align-left bg-gray-700"
+                          className="p-2 w-52 -my-2 -ml-2 text-white text-align-left bg-black1 hover:bg-black2 duration-300"
                         />
                       </div>
                     </Container>
@@ -123,7 +119,7 @@ export default function AddTask() {
 
                 <div className="pb-4">
                   <label
-                    className="block font-semibold text-md pb-2"
+                    className="block scp text-md pb-2"
                     htmlFor="priority"
                   >
                     Priority
@@ -136,7 +132,7 @@ export default function AddTask() {
                       setInputPriority(e.target.value);
                       console.log(inputPriority);
                     }}
-                    className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
+                    className="input-field w-full"
                   >
                     <option>Select an option</option>
                     <option>Low</option>
@@ -147,7 +143,7 @@ export default function AddTask() {
 
                 <div>
                   <label
-                    className="block font-semibold text-md pb-2"
+                    className="block scp text-md pb-2"
                     htmlFor="progress"
                   >
                     Progress
@@ -159,13 +155,13 @@ export default function AddTask() {
                     step="10"
                     value={inputProgress}
                     onChange={(e) => setInputProgress(parseInt(e.target.value))}
-                    className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+                    className="w-full h-1 bg-black2 rounded-lg appearance-none cursor-pointer"
                   ></input>
-                  <span className="pt-2 text-center">{inputProgress}%</span>
+                  <span className="scp pt-2 text-center">{inputProgress}%</span>
                 </div>
 
                 <div className="flex pt-8 mx-auto justify-center">
-                  <button className="" type="submit" onClick={handleAddTask}>
+                  <button type="submit" onClick={handleAddTask}>
                     <CreateTask />
                   </button>
                 </div>
@@ -179,7 +175,7 @@ export default function AddTask() {
         <div className="pb-4">
           <React.Fragment>
             <Container>
-              <div className="border text-sm rounded-lg block w-32 p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 text-black col-sm-5">
+              <div className="input-field">
                 <DatePicker
                   selected={inputStartDate}
                   onChange={(date: React.SetStateAction<string>) =>
@@ -191,7 +187,7 @@ export default function AddTask() {
                   showTimeSelect
                   timeFormat="HH:mm"
                   timeIntervals={15}
-                  className="p-2 w-28 -my-2 -ml-2 text-white text-align-left bg-gray-700"
+                  className="p-2 w-28 -my-2 -ml-2 text-white text-align-left bg-black1 hover:bg-black2 duration-300"
                 />
               </div>
             </Container>
@@ -201,7 +197,7 @@ export default function AddTask() {
         <div className="pb-4">
           <React.Fragment>
             <Container>
-              <div className="border text-sm rounded-lg block w-32 p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500 text-black col-sm-5">
+              <div className="input-field">
                 <DatePicker
                   selected={inputEndDate}
                   onChange={(date: React.SetStateAction<string>) =>
@@ -213,13 +209,15 @@ export default function AddTask() {
                   showTimeSelect
                   timeFormat="HH:mm"
                   timeIntervals={15}
-                  className="p-2 w-28 -my-2 -ml-2 text-white text-align-left bg-gray-700"
+                  className="p-2 w-28 -my-2 -ml-2 text-white text-align-left bg-black1 hover:bg-black2 duration-300"
                 />
               </div>
             </Container>
           </React.Fragment>
         </div>
       </div>
+      </div>
+
     </React.Fragment>
   );
 }
