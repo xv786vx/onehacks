@@ -49,12 +49,15 @@ else app.setPath("userData", `${app.getPath("userData")} (development)`);
     }
   );
 
-  ipcMain.handle("distribute-tasks", (_, start_hour, end_hour) => {
+  ipcMain.on("distribute-tasks", (e, start_hour, end_hour) => {
     const result: number[] = task_distribution(
       get_tasks(),
       start_hour,
       end_hour
     );
+
+    e.sender.send("time-slots", result);
+
     return result;
   });
 })();

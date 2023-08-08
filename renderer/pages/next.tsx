@@ -15,6 +15,8 @@ export default function AddTask() {
   const [inputStartDate, setInputStartDate] = useState("");
   const [inputEndDate, setInputEndDate] = useState("");
 
+  const [outputSchedule, setOutputSchedule] = useState([]);
+
   const handleAddTask = async () => {
     await ipcRenderer.invoke(
       "add-task",
@@ -27,18 +29,6 @@ export default function AddTask() {
     setInputDate("");
     setInputPriority("");
     setInputProgress(0);
-  };
-
-  const handleDistributeTasks = async () => {
-    const data = await ipcRenderer.invoke(
-      "distribute-tasks",
-      new Date(inputStartDate).getHours(),
-      new Date(inputEndDate).getHours()
-    );
-
-    console.log(new Date(inputStartDate).getHours());
-    console.log(new Date(inputEndDate).getHours());
-    console.log(data);
   };
 
   const [isOpen, setIsOpen] = useState(false);
@@ -197,11 +187,11 @@ export default function AddTask() {
                         setInputStartDate(date)
                       }
                       placeholderText="Start Study"
-                      dateFormat="MMMM d, yyyy h:mm aa"
+                      dateFormat="h:mm aa"
                       showPopperArrow={false}
                       showTimeSelect
                       showTimeSelectOnly
-                      timeFormat="HH:mm"
+                      timeFormat="h:mm aa"
                       timeIntervals={15}
                       className="p-2 w-32 -my-2 -ml-2 text-white text-center bg-black1 hover:bg-black2 duration-300"
                     />
@@ -220,11 +210,11 @@ export default function AddTask() {
                         setInputEndDate(date)
                       }
                       placeholderText="End Study"
-                      dateFormat="MMMM d, yyyy h:mm aa"
+                      dateFormat="h:mm aa"
                       showPopperArrow={false}
                       showTimeSelect
                       showTimeSelectOnly
-                      timeFormat="HH:mm"
+                      timeFormat="h:mm aa"
                       timeIntervals={15}
                       className="p-2 w-32 -my-2 -ml-2 text-white text-center bg-black1 hover:bg-black2 duration-300"
                     />
@@ -242,13 +232,24 @@ export default function AddTask() {
                         ? "distribute-btn-disabled"
                         : "distribute-btn"
                     }
-                    onClick={handleDistributeTasks}
+                    onClick={() => {
+                      ipcRenderer.send(
+                        "distribute-tasks",
+                        new Date(inputStartDate).getHours(),
+                        new Date(inputEndDate).getHours()
+                      );
+
+                      ipcRenderer.on("time-slots", (_, data) => {
+                        setOutputSchedule(data);
+                      });
+                    }}
                     disabled={
                       inputStartDate.length === 0 || inputEndDate.length === 0
                     }
                   >
                     Assemble Schedule
                   </button>
+                  <span>{`${outputSchedule}`}</span>
                 </Container>
               </React.Fragment>
             </div>
