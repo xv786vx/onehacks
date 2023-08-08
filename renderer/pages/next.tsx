@@ -249,7 +249,11 @@ export default function AddTask() {
                   >
                     Assemble Schedule
                   </button>
-                  <span>{`${outputSchedule}`}</span>
+                  <div>
+                  <p className="scp pb-4">Amount of time to work on each task in order in mins:</p>
+                  <p className="scp">{`${outputSchedule}`}</p>
+                  </div>
+                  
                 </Container>
               </React.Fragment>
             </div>
