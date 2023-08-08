@@ -50,13 +50,16 @@ export default (
   };
 
   const ensureVisibleOnSomeDisplay = (windowState) => {
-    const visible = screen.getAllDisplays().some((display) => windowWithinBounds(windowState, display.bounds));
+    const visible = screen
+      .getAllDisplays()
+      .some((display) => windowWithinBounds(windowState, display.bounds));
     if (!visible) return resetToDefaults();
     return windowState;
   };
 
   const saveState = () => {
-    if (!win.isMinimized() && !win.isMaximized()) Object.assign(state, getCurrentPosition());
+    if (!win.isMinimized() && !win.isMaximized())
+      Object.assign(state, getCurrentPosition());
     store.set(key, state);
   };
 

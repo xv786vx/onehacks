@@ -4,6 +4,105 @@
 
 @layer base {
   body {
-    @apply bg-zinc-800 text-white;
+    @apply bg-gray-800 text-white;
   }
+}
+
+.logo {
+  @apply w-full sm:max-w-md md:max-w-lg max-w-sm pl-24 sm:pl-36 md:pl-48 pt-4 sm:pt-16 md:pt-36;
+}
+
+.scp {
+  font-family: "Source Code Pro", monospace;
+}
+
+.homepage-btn {
+  @apply bg-black1 border border-sage2 hover:bg-black2 duration-300 text-white text-2xl shadow py-4 px-8 rounded-[18px];
+  font-family: "Source Code Pro", monospace;
+}
+
+.toggle-btn {
+  @apply bg-black1 border border-sage2 hover:bg-black2 duration-300 text-white text-2xl shadow py-[5px] px-4 rounded-[8px];
+  font-family: "Source Code Pro", monospace;
+}
+
+.back-btn {
+  @apply bg-black1 border border-sage2 hover:bg-black2 duration-300 text-white text-lg shadow py-[5px] px-4 mb-4 rounded-[8px];
+  font-family: "Source Code Pro", monospace;
+}
+
+.distribute-btn {
+  @apply bg-black1 border border-sage2 hover:bg-black2 duration-300 text-white text-lg shadow py-[5px] px-4 mb-4 rounded-[8px];
+  font-family: "Source Code Pro", monospace;
+}
+
+.distribute-btn-disabled {
+  @apply bg-black1 bg-opacity-50 border border-sage2 cursor-not-allowed text-gray-600 text-lg shadow py-2 px-6 rounded-[8px];
+  font-family: "Source Code Pro", monospace;
+}
+
+.task-btn {
+  @apply bg-black1 border border-sage2 hover:bg-black2 duration-300 text-white text-lg shadow py-2 px-6 rounded-[8px];
+  font-family: "Source Code Pro", monospace;
+}
+
+.task-btn-disabled {
+  @apply bg-black1 bg-opacity-50 border border-sage2 cursor-not-allowed text-gray-600 text-lg shadow py-2 px-6 rounded-[8px];
+  font-family: "Source Code Pro", monospace;
+}
+
+.input-field {
+  @apply bg-black1 border border-sage2 hover:bg-black2 duration-300 text-white shadow py-2 px-6 rounded-[8px];
+  font-family: "Source Code Pro", monospace;
+}
+
+.sage-title {
+  font-family: "Source Code Pro", monospace;
+  @apply bg-black1 pl-24 sm:pl-36 md:pl-48 pt-16 pb-4 text-6xl font-bold;
+}
+
+.sage-slogan {
+  font-family: "Source Code Pro", monospace;
+  @apply bg-black1 pl-24 sm:pl-36 md:pl-48 pt-2 text-2xl;
+}
+
+.testimonial-title {
+  font-family: "Source Code Pro", monospace;
+  @apply bg-black1 pl-24 sm:pl-36 md:pl-48 pt-40 pb-20 text-4xl font-bold;
+}
+
+.quote {
+  font-family: "Source Code Pro", monospace;
+  @apply bg-black1 pl-24 sm:pl-36 md:pl-48 pb-16 pr-40 text-xl;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #313131 #1f1f1f;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #1f1f1f;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #313131;
+  border-radius: 3px;
+}
+
+.custom-slider {
+  @apply w-full h-1 bg-black2 rounded-lg appearance-none cursor-pointer;
+}
+
+.custom-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: #72b68a;
+  border-radius: 50%;
+  cursor: pointer;
 }
