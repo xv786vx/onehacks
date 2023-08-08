@@ -26,8 +26,18 @@
   font-family: 'Source Code Pro', monospace;
 }
 
+.back-btn {
+  @apply bg-black1 border border-sage2 hover:bg-black2 duration-300 text-white text-lg shadow py-[5px] px-4 mb-4 rounded-[8px];
+  font-family: 'Source Code Pro', monospace;
+}
+
 .task-btn {
   @apply bg-black1 border border-sage2 hover:bg-black2 duration-300 text-white text-lg shadow py-2 px-6 rounded-[8px];
+  font-family: 'Source Code Pro', monospace;
+}
+
+.task-btn-disabled {
+  @apply bg-black1 bg-opacity-50 border border-sage2 cursor-not-allowed text-gray-600 text-lg shadow py-2 px-6 rounded-[8px];
   font-family: 'Source Code Pro', monospace;
 }
 
@@ -72,4 +82,17 @@
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: #313131;
   border-radius: 3px;
+}
+
+.custom-slider {
+  @apply w-full h-1 bg-black2 rounded-lg appearance-none cursor-pointer
+}
+
+.custom-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: #72B68A;
+  border-radius: 50%;
+  cursor: pointer;
 }

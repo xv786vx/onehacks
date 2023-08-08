@@ -44,7 +44,7 @@ export default function AddTask() {
       <div>
         <button
           onClick={handleClick}
-          className="task-btn"
+          className={inputName.length === 0 || inputDate.length === 0 ? "task-btn-disabled" : "task-btn"}
           disabled={inputName.length === 0 || inputDate.length === 0}
         >
           Create Task
@@ -62,9 +62,10 @@ export default function AddTask() {
       </Head>
 
       <div className="bg-black1 h-screen">
+        <div className="w-96 pl-8 pt-12">
 
       <Link href="/home">
-        hi
+        <button className="back-btn">Back</button>
       </Link>
 
       <div className="container pb-4">
@@ -75,7 +76,7 @@ export default function AddTask() {
           {isOpen ? "-" : "+"}
         </button>
         {isOpen && (
-          <div className="bg-black1 border border-sage2 w-72 mt-4 p-4">
+          <div className="bg-black1 border border-sage2 rounded-[8px] w-84 mt-4 p-4">
             <div className="flex p-4 justify-center items-center ">
               <form className="flex flex-col">
                 <div className="pb-4">
@@ -104,7 +105,7 @@ export default function AddTask() {
                           onChange={(date: React.SetStateAction<string>) =>
                             setInputDate(date)
                           }
-                          placeholderText="Click to select a date"
+                          placeholderText="Select date"
                           dateFormat="MMMM d, yyyy h:mm aa"
                           showPopperArrow={false}
                           showTimeSelect
@@ -150,12 +151,11 @@ export default function AddTask() {
                   </label>
 
                   <input
-                    id="default-range"
                     type="range"
                     step="10"
                     value={inputProgress}
                     onChange={(e) => setInputProgress(parseInt(e.target.value))}
-                    className="w-full h-1 bg-black2 rounded-lg appearance-none cursor-pointer"
+                    className="custom-slider"
                   ></input>
                   <span className="scp pt-2 text-center">{inputProgress}%</span>
                 </div>
@@ -171,7 +171,7 @@ export default function AddTask() {
         )}
       </div>
 
-      <div className="flex flex-row px-4 gap-4">
+      <div className="flex flex-row gap-4">
         <div className="pb-4">
           <React.Fragment>
             <Container>
@@ -181,13 +181,13 @@ export default function AddTask() {
                   onChange={(date: React.SetStateAction<string>) =>
                     setInputStartDate(date)
                   }
-                  placeholderText="Start Studying"
+                  placeholderText="Start Study"
                   dateFormat="MMMM d, yyyy h:mm aa"
                   showPopperArrow={false}
                   showTimeSelect
                   timeFormat="HH:mm"
                   timeIntervals={15}
-                  className="p-2 w-28 -my-2 -ml-2 text-white text-align-left bg-black1 hover:bg-black2 duration-300"
+                  className="p-2 w-32 -my-2 -ml-2 text-white text-center bg-black1 hover:bg-black2 duration-300"
                 />
               </div>
             </Container>
@@ -203,18 +203,19 @@ export default function AddTask() {
                   onChange={(date: React.SetStateAction<string>) =>
                     setInputEndDate(date)
                   }
-                  placeholderText="End Studying"
+                  placeholderText="End Study"
                   dateFormat="MMMM d, yyyy h:mm aa"
                   showPopperArrow={false}
                   showTimeSelect
                   timeFormat="HH:mm"
                   timeIntervals={15}
-                  className="p-2 w-28 -my-2 -ml-2 text-white text-align-left bg-black1 hover:bg-black2 duration-300"
+                  className="p-2 w-32 -my-2 -ml-2 text-white text-center bg-black1 hover:bg-black2 duration-300"
                 />
               </div>
             </Container>
           </React.Fragment>
         </div>
+      </div>
       </div>
       </div>
 
