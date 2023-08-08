@@ -29,6 +29,18 @@ export default function AddTask() {
     setInputProgress(0);
   };
 
+  const handleDistributeTasks = async () => {
+    const data = await ipcRenderer.invoke(
+      "distribute-tasks",
+      new Date(inputStartDate).getHours(),
+      new Date(inputEndDate).getHours()
+    );
+
+    console.log(new Date(inputStartDate).getHours());
+    console.log(new Date(inputEndDate).getHours());
+    console.log(data);
+  };
+
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
@@ -217,6 +229,19 @@ export default function AddTask() {
                       className="p-2 w-32 -my-2 -ml-2 text-white text-center bg-black1 hover:bg-black2 duration-300"
                     />
                   </div>
+                </Container>
+              </React.Fragment>
+            </div>
+
+            <div className="pb-4">
+              <React.Fragment>
+                <Container>
+                  <button
+                    className="distribute-btn"
+                    onClick={handleDistributeTasks}
+                  >
+                    Assemble Schedule
+                  </button>
                 </Container>
               </React.Fragment>
             </div>
