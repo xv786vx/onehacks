@@ -188,6 +188,7 @@ export default function AddTask() {
                       dateFormat="MMMM d, yyyy h:mm aa"
                       showPopperArrow={false}
                       showTimeSelect
+                      showTimeSelectOnly
                       timeFormat="HH:mm"
                       timeIntervals={15}
                       className="p-2 w-32 -my-2 -ml-2 text-white text-center bg-black1 hover:bg-black2 duration-300"
@@ -210,6 +211,7 @@ export default function AddTask() {
                       dateFormat="MMMM d, yyyy h:mm aa"
                       showPopperArrow={false}
                       showTimeSelect
+                      showTimeSelectOnly
                       timeFormat="HH:mm"
                       timeIntervals={15}
                       className="p-2 w-32 -my-2 -ml-2 text-white text-center bg-black1 hover:bg-black2 duration-300"
