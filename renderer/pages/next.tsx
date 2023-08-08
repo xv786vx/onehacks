@@ -237,8 +237,15 @@ export default function AddTask() {
               <React.Fragment>
                 <Container>
                   <button
-                    className="distribute-btn"
+                    className={
+                      inputStartDate.length === 0 || inputEndDate.length === 0
+                        ? "distribute-btn-disabled"
+                        : "distribute-btn"
+                    }
                     onClick={handleDistributeTasks}
+                    disabled={
+                      inputStartDate.length === 0 || inputEndDate.length === 0
+                    }
                   >
                     Assemble Schedule
                   </button>

@@ -36,6 +36,11 @@
   font-family: "Source Code Pro", monospace;
 }
 
+.distribute-btn-disabled {
+  @apply bg-black1 bg-opacity-50 border border-sage2 cursor-not-allowed text-gray-600 text-lg shadow py-2 px-6 rounded-[8px];
+  font-family: "Source Code Pro", monospace;
+}
+
 .task-btn {
   @apply bg-black1 border border-sage2 hover:bg-black2 duration-300 text-white text-lg shadow py-2 px-6 rounded-[8px];
   font-family: "Source Code Pro", monospace;
