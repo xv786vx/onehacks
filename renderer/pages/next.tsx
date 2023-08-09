@@ -156,7 +156,7 @@ export default function AddTask() {
                         step="10"
                         value={inputProgress}
                         onChange={(e) =>
-                          setInputProgress(parseInt(e.target.value))
+                          setInputProgress(100 - parseInt(e.target.value))
                         }
                         className="custom-slider"
                       ></input>
